@@ -21,8 +21,8 @@ app.use("/", server);
 app.use((rq, rs) => {
     rs.status(404);
     rs.render('error.hbs', {
-        title: 'Error',
-        caption: 'Ошибка, данный запрос не существует',
+        title: 'Error 404',
+        caption: 'Ошибка, данный запрос не существует =('
     });
 });
 
