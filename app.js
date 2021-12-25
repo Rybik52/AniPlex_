@@ -4,11 +4,14 @@ const hbs = require("express-handlebars"); // Подключаем express-handl
 const { engine } = require('express-handlebars');
 const server = require("./server/routes/server"); // Подключаем экспортированную в Шаге 4 переменную
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
 const PORT = process.env.PORT || 8080; // Константа для порта
 const PASS = process.env.PASS;
 const app = express();
 
-app.use(express.json()); // Благодаря этому мы можем использовать req.body (Я использую rq.body)
+app.use(express.json()); // Благодаря этому мы можем использовать req.body
+app.use(fileUpload());
+
 app.engine('hbs', engine());
 app.set('view engine', 'hbs');
 app.set("views", "./server/views");

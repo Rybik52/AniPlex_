@@ -1,0 +1,33 @@
+{{#if admin}}
+<form action="/admin" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
+    <label>Название:</label>
+    <input type="text" name="title" size="50">
+    <label>Автор:</label>
+    <input type="text" name="autor" size="50">
+    <label>Дата выпуска (год):</label>
+    <input type="text" name="date" size="50">
+    <label>Цена:</label>
+    <input type="text" name="price" size="50">
+    <label>Статус:</label>
+    <select name="status">
+        <option value="Издано">Издано</option>
+        <option value="Выходит">Выходит</option>
+    </select>
+    <label>Статус (Класс):</label>
+    <select name="status__class">
+        <option value="entered">entered</option>
+        <option value="enter">enter</option>
+    </select>
+    <label>Жанры (запись через запятую):</label>
+    <input type="text" name="genres" size="50">
+    <label>Картинка:</label>
+    <input type="file" name="img">
+    <input type="submit" value="Добавить">
+</form>
+{{else}}
+<form action="/login" method="GET" class="login">
+    <input type="email" name="email" class="login__email">
+    <input type="password" name="password" class="login__password">
+    <input type="submit" value="Отправить">
+</form>
+{{/if}}

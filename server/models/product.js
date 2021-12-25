@@ -6,7 +6,9 @@ const Products = new Schema({
     date: { type: String, required: true },
     genres: { type: String, required: true },
     price: { type: Number, required: true },
-    status: { type: String, required: true }
+    status: { type: String, required: true },
+    status__class: { type: String, required: true },
+    img: { type: String, required: true }
 });
 
 module.exports = model('Products', Products);
