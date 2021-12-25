@@ -17,7 +17,7 @@ app.use(express.static("./public"));
 app.use("/", server);
 app.use((rq, rs) => {
     rs.status(404);
-    rs.render('error', {
+    rs.render('error.hbs', {
         title: 'Error',
         caption: 'Ошибка, данный запрос не существует',
     });
