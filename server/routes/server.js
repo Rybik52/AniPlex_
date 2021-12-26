@@ -23,20 +23,6 @@ router.get('/login', async (req, res) => {
     }
 });
 
-router.get('/product/:id', async (req, res) => {
-    const tovar = await Products.findOne({ _id: req.params.id });
-    res.render('product', {
-        title: tovar.title,
-        autor: tovar.autor,
-        date: tovar.date,
-        price: tovar.price,
-        status: tovar.status,
-        status__class: tovar.status__class,
-        genres: tovar.genres,
-        img: tovar.img
-    });
-});
-
 router.post('/admin', async (req, res) => {
     try {
         if (!req.files) {
@@ -69,6 +55,28 @@ router.post('/admin', async (req, res) => {
         }
     } catch (err) {
         res.status(500).send(err);
+    }
+});
+
+router.get('/product/:id', async (req, res) => {
+    let id = req.params.id;
+    let tovar = await Products.findOne({ _id: id }).lean();
+    if (tovar !== undefined) {
+        res.render('product', {
+            title: tovar.title,
+            autor: tovar.autor,
+            date: tovar.date,
+            price: tovar.price,
+            status: tovar.status,
+            status__class: tovar.status__class,
+            genres: tovar.genres,
+            img: tovar.img
+        });
+    } else {
+        res.render('error', {
+            title: 'Main Page',
+            caption: 'Данный товар не существует или временно снят с продажи, пожалуйста проверьте введённый запрос',
+        });
     }
 });
 
