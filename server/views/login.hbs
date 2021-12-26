@@ -3,13 +3,13 @@
         <h1>Админка</h1>
 <form action="/admin" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
     <label>Название:</label>
-    <input required type="text" name="title" size="50">
+    <input required placeholder="Атака Титанов" type="text" name="title" size="50">
     <label>Автор:</label>
-    <input required type="text" name="autor" size="50">
+    <input required type="text" placeholder="Хаяо Миадзаки" name="autor" size="50">
     <label>Дата выпуска (год):</label>
-    <input required type="text" name="date" size="50">
+    <input required type="number" placeholder="2007" name="date" size="50">
     <label>Цена:</label>
-    <input required type="text" name="price" size="50">
+    <input required type="number" placeholder="200" name="price" size="50">
     <label>Статус:</label>
     <select required name="status">
         <option value="Издано">Издано</option>
@@ -20,8 +20,10 @@
         <option value="entered">entered</option>
         <option value="enter">enter</option>
     </select>
+    <lable>Описание: </lable>
+    <textarea cols="10" rows="10" placeholder="Любая прикольная история)" required name="disription"></textarea>
     <label>Жанры (запись через запятую):</label>
-    <input type="text" name="genres" size="50">
+    <input type="text" placeholder="Исекай, трапы" name="genres" size="50">
     <label>Картинка:</label>
     <input required type="file" name="img">
     <input required type="submit" value="Добавить продукт">

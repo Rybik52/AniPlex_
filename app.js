@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require('express');
 const hbs = require("express-handlebars"); // Подключаем express-handlebars
+const favicon = require('serve-favicon');
 const { engine } = require('express-handlebars');
 const server = require("./server/routes/server"); // Подключаем экспортированную в Шаге 4 переменную
 const mongoose = require('mongoose');
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 8080; // Константа для порта
 const PASS = process.env.PASS;
 const app = express();
 
+app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(express.json()); // Благодаря этому мы можем использовать req.body
 app.use(fileUpload());
 
@@ -18,13 +20,7 @@ app.set("views", "./server/views");
 app.use(express.static("./public"));
 
 app.use("/", server);
-app.use((rq, rs) => {
-    rs.status(404);
-    rs.render('error.hbs', {
-        title: 'Error 404',
-        caption: 'Ошибка, данный запрос не существует =('
-    });
-});
+
 
 const start = async () => {
     try {
