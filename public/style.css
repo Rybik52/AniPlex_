@@ -156,11 +156,6 @@ img{
     transition-delay: 40ms;
 }
 .pokupka {
-    /*height: 10%;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: flex-end;*/
-    /*margin-top: 10px;*/
     position: absolute;
     bottom: 30px;
     left: 50px;
@@ -250,18 +245,17 @@ footer {
     flex-wrap: nowrap;
 }
 .item{
-    height: 500px;
-    width: 380px;
+    width: 400px;
     background: rgb(196,196,196);
-    border-radius: 15px;
+    border-radius: 0.2rem;
     margin: 100px 100px 150px 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     padding: 10px;
 }
 .item img{
-    height: 100%;
     width: 100%;
 }
 
