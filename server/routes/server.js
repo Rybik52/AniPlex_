@@ -5,7 +5,7 @@ const Products = require('../models/product');
 router.get('/', async (req, res) => {
     const product = await Products.find().lean();
     res.render('index.hbs', {
-        title: 'cool',
+        title: 'AniPlex',
         product: product
     });
 });
@@ -14,7 +14,7 @@ router.get('/login', async (req, res) => {
     if (req.query.email == process.env.EMAIL && req.query.password == process.env.PASSWORD) {
         console.log('1');
         res.render('login', {
-            title: 'cool',
+            title: 'AniPlex',
             admin: true
         });
     } else {
@@ -42,6 +42,7 @@ router.post('/admin', async (req, res) => {
                 status: req.body.status,
                 status__class: req.body.status__class,
                 genres: req.body.genres,
+                description: req.body.description,
                 img: imgname
             });
             await tovar.save();
@@ -76,6 +77,8 @@ router.get('/product/:id', async (req, res) => {
             status: tovar.status,
             status__class: tovar.status__class,
             genres: tovar.genres,
+            description: tovar.description,
+            _id: tovar._id,
             img: tovar.img
         });
     } else {

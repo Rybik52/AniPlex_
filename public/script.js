@@ -1,7 +1,8 @@
 let sum = 0;
 const totalprice = document.querySelector('.total');
 const prices = document.querySelectorAll('.price h3');
-const buttons = document.querySelectorAll('.buy');
+const buttons = document.querySelectorAll('.yey');
+
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', (evt) => {
         if (document.cookie.length > 0) {
@@ -19,8 +20,34 @@ const basket = document.querySelector('.basket__container');
 const Action = document.querySelector('.Action');
 const amount = document.querySelector('.total-amount');
 const itemm = document.querySelector('.itemm');
+const Cart = document.querySelector('.Cart-Container');
 
+Cart.addEventListener('click', (evt) => {
+    evt.preventDefault()
+})
 
+function counterYes() {
+    console.log(1)
+    let count = document.querySelectorAll('.Cart-Itemm').length;
+    if (count == 1) {
+        itemm.innerHTML = `1 товар`;
+    } else if (count >= 2 && count < 5) {
+        itemm.innerHTML = `${count} товара`;
+    } else if (count >= 5 && count < 21) {
+        itemm.innerHTML = `${count} товаров`;
+    } else {
+        itemm.innerHTML = `0 товаров`;
+    }
+    let counter = 0;
+    console.log(2)
+    amount.innerHTML = counter;
+    document.querySelectorAll('.amount__price').forEach(el => {
+        counter += +el.innerHTML;
+    });
+    console.log(3)
+    amount.innerHTML = `${counter} ₽`;
+    console.log(4)
+}
 
 btn.addEventListener('click', (evt) => {
     basket.classList.add('basket__active');
@@ -57,25 +84,9 @@ btn.addEventListener('click', (evt) => {
             </div>
             `;
             card__main__container.appendChild(div);
+            counterYes();
         });
     }
-    function counterYes() {
-        let count = document.querySelectorAll('.Cart-Itemm').length;
-        if (count == 1) {
-            itemm.innerHTML = `1 товар`;
-        } else if (count >= 2 && count < 5) {
-            itemm.innerHTML = `${count} товара`;
-        } else if (count >= 5 && count < 21) {
-            itemm.innerHTML = `${count} товаров`;
-        }
-        let counter = 0;
-        amount.innerHTML = counter;
-        document.querySelectorAll('.amount__price').forEach(el => {
-            counter += +el.innerHTML;
-        });
-        amount.innerHTML = `${counter} ₽`;
-    }
-    counterYes();
 });
 
 Action.onclick = (evt) => {
@@ -84,6 +95,15 @@ Action.onclick = (evt) => {
 
 // basket.onclick = (evt) => {
 //     basket.classList.remove('basket__active');
-//
+
 // }
 
+
+const buttonClean = document.querySelector('.clean');
+buttonClean.addEventListener('click', (evt) => {
+    document.cookie = '';
+    while (card__main__container.firstChild) {
+        card__main__container.firstChild.remove();
+    }
+    counterYes();
+});

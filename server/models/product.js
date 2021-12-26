@@ -8,6 +8,7 @@ const Products = new Schema({
     price: { type: Number, required: true },
     status: { type: String, required: true },
     status__class: { type: String, required: true },
+    description: { type: String, required: true },
     img: { type: String, required: true }
 });
 
