@@ -58,6 +58,12 @@ router.post('/admin', async (req, res) => {
     }
 });
 
+router.get('/getAllProducts/:id', async (req, res) => {
+    let id = req.params.id;
+    let tovar = await Products.findOne({ _id: id }).lean();
+    res.json(tovar);
+});
+
 router.get('/product/:id', async (req, res) => {
     let id = req.params.id;
     let tovar = await Products.findOne({ _id: id }).lean();
