@@ -23,6 +23,20 @@ router.get('/login', async (req, res) => {
     }
 });
 
+router.get('/product/:id', async (req, res) => {
+    const tovar = await Products.findOne({ _id: req.params.id });
+    res.render('product', {
+        title: tovar.title,
+        autor: tovar.autor,
+        date: tovar.date,
+        price: tovar.price,
+        status: tovar.status,
+        status__class: tovar.status__class,
+        genres: tovar.genres,
+        img: tovar.img
+    });
+});
+
 router.post('/admin', async (req, res) => {
     try {
         if (!req.files) {
