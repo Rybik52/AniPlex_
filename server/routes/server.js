@@ -12,13 +12,11 @@ router.get('/', async (req, res) => {
 router.get('/login', async (req, res) => {
     console.log(req.query);
     if (req.query.email == process.env.EMAIL && req.query.password == process.env.PASSWORD) {
-        console.log('1');
         res.render('login', {
             title: 'AniPlex',
             admin: true
         });
     } else {
-        console.log('2')
         res.render('login');
     }
 });
@@ -31,7 +29,6 @@ router.post('/admin', async (req, res) => {
                 message: 'No file uploaded'
             });
         } else {
-            console.log(req.body);
             const img = req.files.img;
             const imgname = img.name;
             const tovar = new Products({
