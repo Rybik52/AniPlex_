@@ -99,7 +99,7 @@ Action.onclick = (evt) => {
 
 const buttonClean = document.querySelector('.clean');
 buttonClean.addEventListener('click', (evt) => {
-    document.cookie = '';
+    document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
     while (card__main__container.firstChild) {
         card__main__container.firstChild.remove();
     }

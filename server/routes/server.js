@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
     });
 });
 router.get('/login', async (req, res) => {
-    console.log(req.query);
     if (req.query.email == process.env.EMAIL && req.query.password == process.env.PASSWORD) {
         res.render('login', {
             title: 'AniPlex',

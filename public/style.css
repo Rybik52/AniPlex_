@@ -321,10 +321,9 @@ h2{margin: 0; padding: 0;}
 .auth{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
-    margin: 5%;
-    margin-bottom: 0;
+    height: 80vh;
     padding: 20px;
     border-radius: 0.2rem;
     background: rgba(245, 245, 245, 0.774);
@@ -583,4 +582,43 @@ textarea {
 
 .Cart-Itemm .second__container .prices .remove:hover{
     color: tomato;
+}
+.main__admin__container{
+    display: flex;
+    align-items: flex-start;
+}
+.objects__container{
+    display: flex;
+    align-items: flex-start;
+    height: 80vh;
+    width: 59vw;
+    border-radius: 0.2rem;
+    margin: 0 0 0 10px;
+    padding: 20px;
+    background: rgba(245, 245, 245, 0.774);
+    font-size: 10px;
+}
+td,
+th {
+    border: 2px solid #202020;
+    padding: 10px;
+    text-align: center;
+    margin-left: 10px;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+th[scope="col"] {
+    background-color: #696969;
+    color: #fff;
+}
+.icon__del .icon__chg {
+    color: black;
+    cursor: pointer;
+}
+.icon__del:hover{
+    background: rgba(255, 0, 0, 0.6);
+}
+.icon__chg:hover{
+    background: rgba(173, 255, 47, 0.6);
 }
