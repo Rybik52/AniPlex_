@@ -20,7 +20,13 @@ app.set("views", "./server/views");
 app.use(express.static("./public"));
 
 app.use("/", server);
-
+app.use((rq, rs) => {
+    rs.status(404);
+    rs.render('error.hbs', {
+        title: 'Error 404',
+        caption: 'Ошибка, данный запрос не существует =('
+    });
+});
 
 const start = async () => {
     try {

@@ -1,6 +1,3 @@
-let sum = 0;
-const totalprice = document.querySelector('.total');
-const prices = document.querySelectorAll('.price h3');
 const buttons = document.querySelectorAll('.yey');
 
 for (let i = 0; i < buttons.length; i++) {
@@ -21,13 +18,13 @@ const Action = document.querySelector('.Action');
 const amount = document.querySelector('.total-amount');
 const itemm = document.querySelector('.itemm');
 const Cart = document.querySelector('.Cart-Container');
+const empty = document.querySelector('.empty');
 
 Cart.addEventListener('click', (evt) => {
     evt.preventDefault()
 })
 
 function counterYes() {
-    console.log(1)
     let count = document.querySelectorAll('.Cart-Itemm').length;
     if (count == 1) {
         itemm.innerHTML = `1 товар`;
@@ -39,14 +36,11 @@ function counterYes() {
         itemm.innerHTML = `0 товаров`;
     }
     let counter = 0;
-    console.log(2)
     amount.innerHTML = counter;
     document.querySelectorAll('.amount__price').forEach(el => {
         counter += +el.innerHTML;
     });
-    console.log(3)
     amount.innerHTML = `${counter} ₽`;
-    console.log(4)
 }
 
 btn.addEventListener('click', (evt) => {
@@ -55,6 +49,10 @@ btn.addEventListener('click', (evt) => {
         while (card__main__container.firstChild) {
             card__main__container.firstChild.remove();
         }
+    if (document.cookie.length === 0) {
+        empty.style = `display: block;`;
+        console.log(1)
+    }
         let arr = document.cookie.split(',');
         arr.forEach(async (id) => {
             let res = await fetch('/getAllProducts/' + id);
@@ -73,9 +71,9 @@ btn.addEventListener('click', (evt) => {
             </div>
             <div class="second__container">
                 <div class="counter">
-                    <div class="btn"> + </div>
-                    <div class="count"> 1 </div>
-                    <div class="btn"> - </div>
+                    <div class="btn">-</div>
+                    <div class="count">1</div>
+                    <div class="btn">+</div>
                 </div>
                 <div class="prices">
                     <div class="amount"> <span class="amount__price">${commit.price}</span> ₽</div>
@@ -101,7 +99,7 @@ Action.onclick = (evt) => {
 
 const buttonClean = document.querySelector('.clean');
 buttonClean.addEventListener('click', (evt) => {
-    document.cookie = '';
+    document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
     while (card__main__container.firstChild) {
         card__main__container.firstChild.remove();
     }

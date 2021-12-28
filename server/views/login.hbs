@@ -1,4 +1,5 @@
 {{#if admin}}
+    <div class="main__admin__container">
 <div class="auth">
     <h1>Админка</h1>
     <form action="/admin" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
@@ -29,6 +30,34 @@
         <input required type="submit" value="Добавить продукт">
     </form>
 </div>
+<div class="objects__container">
+    <table>
+    <tr>
+            <th scope="col">ID:</th>
+            <th scope="col">Название:</th>
+            <th scope="col">Дата выпуска:</th>
+            <th scope="col">Цена:</th>
+            <th scope="col">Статус:</th>
+            <th scope="col">Статус (Класс):</th>
+            <th scope="col">Жанры:</th>
+            <th scope="col">Изменить</th>
+            <th scope="col">❌Удалить</th>
+    </tr>
+    <tr>
+            <td>{{_id}}</td>
+            <td>{{title}}</td>
+            <td>{{date}}</td>
+            <td>{{price}}</td>
+            <td>{{price}}</td>
+            <td>{{price}}</td>
+            <td>{{price}}</td>
+            <td class="icon__chg"><img src="https://img.icons8.com/ios-glyphs/30/000000/trash--v1.png" width="15px"/></td>
+            <td class="icon__del">❌</td>
+
+    </tr>
+    </table>
+</div>
+    </div>
 {{else}}
 
 <div class="auth">
