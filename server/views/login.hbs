@@ -43,7 +43,8 @@
             <th scope="col">Изменить</th>
             <th scope="col">❌Удалить</th>
     </tr>
-    <tr>
+    {{#each product}}
+            <tr>
             <td>{{_id}}</td>
             <td>{{title}}</td>
             <td>{{date}}</td>
@@ -55,6 +56,7 @@
             <td class="icon__del">❌</td>
 
     </tr>
+        {{/each}}
     </table>
 </div>
     </div>
