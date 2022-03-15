@@ -20,6 +20,15 @@ router.get('/login', async (req, res) => {
     }
 });
 
+router.get('/catalogue/:type', async (req, res) => {
+    let x = req.params.type;
+    const product = await Products.find({ type: x }).lean();
+    res.render('index', {
+        product: product
+    });
+});
+
+
 router.post('/admin', async (req, res) => {
     try {
         if (!req.files) {

@@ -1,12 +1,12 @@
 <div class="cards">
     {{#each product}}
     <div class="card">
-        <a href="/product/{{_id}}"><img class="product" src="/images/{{img}}" alt="{{title}}"></a>
+        <a href="/product/{{_id}}"><img class="product {{type}}" src="/images/{{img}}" alt="{{title}}"></a>
         <div class="caption">
             <h4><a href="/product/{{_id}}">{{title}}</a></h4>
             <p>
                 Автор: {{autor}}<br>
-                Статус: <span class="{{status__class}}">{{status}}</span> {{date}}г.<br>
+                Статус: <span class="{{status__class}}">{{status}}</span>{{date}}г.<br>
                 Жанры: {{genres}}
             </p>
         </div>
